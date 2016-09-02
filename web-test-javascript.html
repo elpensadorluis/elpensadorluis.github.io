@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Pruebas de Diseño JavaScript</title>
+  <script src="constructor.js" charset="utf-8"></script>
+</head>
+<body>
+    <h1>Banco de Prueba de JavaScript ver 0.0.0.1</h1>
+    <input type='file' accept='text/plain' onchange='openFile(event)'><br>
+    <script type="text/javascript">
+      var openFile = function(event) {
+      var input = event.target;
+
+      var reader = new FileReader();
+      reader.onload = function(){
+        //var text = reader.result.substring(0, 200);
+        var text = reader.result;
+        //var node = document.getElementById('output');
+        //node.innerText = text;
+        //console.log(reader.result.substring(0, 400));
+        console.log(text);
+        inicio(text);
+        //console.log(test);
+      };
+      reader.readAsText(input.files[0]);
+
+    };
+
+    SabioGuruStudio();
+
+    </script>
+</body>
+</html>
