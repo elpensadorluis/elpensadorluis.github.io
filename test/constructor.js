@@ -56,21 +56,24 @@ function SabioGuruStudio() {
 		 " ___) | (_| | |_) | | (_) | |_| | |_| | |  | |_| |",
 		 "|____/ \\__,_|_.__/|_|\\___/ \\____|\\__,_|_|   \\__,_|",
 		 "__________________________________________________",
-		 "                                         SabioGuru"
+		 "                                  www.SabioGuru.me"
 		]
-		
+
 		for (i = 0; i < lines.length; i ++) {
 				console.log(lines[i]);
 		}
 }
 function inicio(archivo){
-	document.write("<h1> Calculadora Fibonacci </h1>");
+	var table = document.getElementById("myTable");
+	$("tbody").children().remove()
+
+//	document.write("<h1> Calculadora Fibonacci </h1>");
 	var input = archivo;
 	var input = input.split("\n");
 	var n = parseInt(input[0]);
 	//____IMPRIMIR_______________________________________________________________
 	console.log("Valor de n: " + n);
-	document.write("<h2> Valores a Calcular </h2>");
+//	document.write("<h2> Valores a Calcular </h2>");
 	//____fin-Imprimir_________________________________________________________
 	for (var i = 0; i <= n; i++) {
 		input[i] = input[i].split(" ");
@@ -84,16 +87,17 @@ function inicio(archivo){
 		}
 	}
 	//-.>>> IMPRIMIR_____________________________________________________________
-	document.write("<h3>");
+//	document.write("<h3>");
 		for (var i = 1; i < input.length -1; i++) {
-			document.write(i+" = [" + input[i]  +"] " );
-			document.write("<br/>");
+//			document.write(i+" = [" + input[i]  +"] " );
+//			document.write("<br/>");
 		}
-	document.write("</h3>");
+//	document.write("</h3>");
 	//___________________________________________________________________________
-	document.write("<h2>Calculando valores de Fibonacci Fib(n)</h2> <h4>(con Algoritmo Matriz Optimizada para valores Fib(0) y Fib(1) aleatorios)</h4>");
-	document.write("<h3>");
-	document.write("<table>");
+//	document.write("<h2>Calculando valores de Fibonacci Fib(n)</h2> <h4>(con Algoritmo Matriz Optimizada para valores Fib(0) y Fib(1) aleatorios)</h4>");
+//	document.write("<h3>");
+	//document.write("<form>");
+	//document.write("<table class=\"table table-striped\"><tbody>");
 	for (var i = 1; i < input.length-1; i++) {
 			/*
 			if (n>=1 && n<=1000 && input[i][0]>=1 && input[i][0]<=1000000000 && input[i][1]>=1 && input[i][1]<=1000000000 && input[i][2]>=1 && input[i][2]<=1000) {
@@ -235,8 +239,14 @@ function inicio(archivo){
 			*/
 			if (input[i].length<1 || input[i].length>1000 || input[i][0]<1 || input[i][0]>1000000000 || input[i][1]<1 || input[i][1]>1000000000 || input[i][2]<1 || input[i][2]>1000) {
 				console.log("Valores fuera del rango permitido");
-
-				document.write("<tr><td>Fib(0) = " + input[i][0] + "</td><td>Fib(1) = " + input[i][1] + "</td><td> <strong> Valor de \"n\" fuera del rango permitido </strong> <td></td></tr>");
+				var row = table.insertRow(-1);
+				var cell1 = row.insertCell(0);
+				var cell2 = row.insertCell(1);
+				var cell3 = row.insertCell(2);
+				cell1.innerHTML = "Fib(0) = " + input[i][0];
+				cell2.innerHTML = "Fib(1) = " + input[i][1];
+				cell3.innerHTML = "Fib(" + input[i][2] + ") = <strong>Valor de n fuera del rango permitido</strong>";
+	//			document.write("<tr><td>Fib(0) = " + input[i][0] + "</td><td>Fib(1) = " + input[i][1] + "</td><td> <strong> Valor de \"n\" fuera del rango permitido </strong> <td></td></tr>");
 
 				//____fin-Imprimir_________________________________________________________
 			}
@@ -374,7 +384,15 @@ function inicio(archivo){
 					var bfib = input[i][1] * bfiborig;
 					var totalfib = afib + bfib;
 					console.log(totalfib);
-					document.write("<tr><td>Fib(0) = " + input[i][0] + "</td><td>Fib(1) = " + input[i][1] + "</td><td>Fib(" + input[i][2] + ") = " + totalfib + "</td></tr>");
+					//document.write("<tr><td>Fib(0) = " + input[i][0] + "</td><td>Fib(1) = " + input[i][1] + "</td><td>Fib(" + input[i][2] + ") = " + totalfib + "</tr></td>");
+//					var table = document.getElementById("myTable");
+					var row = table.insertRow(-1);
+    			var cell1 = row.insertCell(0);
+    			var cell2 = row.insertCell(1);
+					var cell3 = row.insertCell(2);
+    			cell1.innerHTML = "Fib(0) = " + input[i][0];
+    			cell2.innerHTML = "Fib(1) = " + input[i][1];
+					cell3.innerHTML = "Fib(" + input[i][2] + ") = " + totalfib;
 
 
 
@@ -385,8 +403,8 @@ function inicio(archivo){
 			}
 			*/
 	}
-	document.write("</table>");
-	document.write("</h3>");
+	//document.write("</tbody></table></form>");
+	//document.write("</h3>");
 
-	document.write("<h2> Fin del Algoritmo </h2>");
+	//document.write("<h2> Fin del Algoritmo </h2>");
 }

@@ -4,12 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
   <title>Pruebas de Diseño JavaScript</title>
+
+
   <script src="constructor.js" charset="utf-8"></script>
 </head>
 <body>
+
     <h1>Banco de Prueba de JavaScript ver 0.0.0.1</h1>
-    <input type='file' accept='text/plain' onchange='openFile(event)'><br>
+    <input type="file" accept="text/plain" onchange="openFile(event)"/>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h1> Calculadora Fibonacci Fib(n)</h1>
+      </div>
+      <div class="panel-body">
+     <h4>(con Algoritmo Matriz Optimizada para valores Fib(0) y Fib(1) aleatorios)</h4>
+  </div>
+      <div class="panel-body">
+      <table id="myTable" class="table table-striped">
+        <tbody>
+
+        </tbody>
+
+      </table>
+    </div>
+    </div>
+
     <script type="text/javascript">
       var openFile = function(event) {
       var input = event.target;
@@ -31,6 +55,7 @@
 
     SabioGuruStudio();
 
-    </script>
+  </script>
+
 </body>
 </html>
