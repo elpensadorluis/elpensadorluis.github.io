@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Ejemplos Chartjs</title>
+        <meta charset="utf-8">
+        
+        <script src="node_modules/chart.js/dist/Chart.bundle.js"></script>
+		<script src="node_modules/hammerjs/hammer.min.js"></script>
+		<script src="node_modules/chartjs-plugin-zoom/chartjs-plugin-zoom.js"></script>
+		<style>
+	        canvas {
+		        -moz-user-select: none;
+		        -webkit-user-select: none;
+		        -ms-user-select: none;
+	        }
+        </style>
+    </head>
+    <body>
+        <!-- Navbar -->
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">CHARTJS</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav navbar-right">
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container"> <!-- container -->
+            <div class="row">
+                <h3>Ejemplo de zoom</h3>
+            </div>
+            <div class="row" style="width:80%">
+                <center>
+                    <canvas id="chart-grafico"></canvas>
+                </center>
+            </div>
+        </div>
+        <br>
+        <!-- Footer -->
+        <footer class="footer text-center">
+            <div class="container">
+                <p>chartjs</p>
+             </div>
+        </footer>
+        <script>
+
+        var randomScalingFactor = function() {
+			return (Math.random() > 0.5 ? 1.0 : -1.0) * Math.round(Math.random() * 100);
+		};
+        var randomColor = function(opacity) {
+			return 'rgba(' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + (opacity || '.3') + ')';
+		};
+
+
+        var lineChartData = {
+			labels : ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio"],
+			datasets : [
+				{
+					label: "Primera serie de datos",
+					fillColor : "rgba(220,220,220,0.2)",
+					strokeColor : "#6b9dfa",
+					pointColor : "#1e45d7",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(220,220,220,1)",
+					data : [90,30,10,80,15,5,15],
+				},
+				{
+					label: "Segunda serie de datos",
+					fillColor : "rgba(151,187,205,0.2)",
+					strokeColor : "#e9e225",
+					pointColor : "#faab12",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(151,187,205,1)",
+					data : [40,50,70,40,85,55,15],
+				}
+			]
+
+		}
+
+
+        lineChartData.datasets.forEach(function(dataset) {
+			dataset.borderColor = randomColor(0.4);
+			dataset.backgroundColor = randomColor(0.1);
+			dataset.pointBorderColor = randomColor(0.7);
+			dataset.pointBackgroundColor = randomColor(0.5);
+			dataset.pointBorderWidth = 1;
+		});
+	window.onload = function() {
+        var ctx = document.getElementById("chart-grafico").getContext("2d");
+        window.myPieChart = new Chart(ctx,{
+				animationEnabled: true,
+                type: 'line',
+                data: lineChartData,
+                options: {
+					title: {
+						display: true,
+						text: 'Presión vs Temperatura'
+					},
+					responsive: true,
+					maintainAspectRatio: true,
+                    scales: {
+						xAxes: [{
+							position: 'bottom',
+							scaleLabel: {
+								display: true,
+								labelString: 'Presión'
+							},
+							ticks: {
+								maxRotation: 0,
+								reverse: false
+							}
+						}],
+						yAxes: [{
+							position: 'left',
+							scaleLabel: {
+								display: true,
+								labelString: 'Temperatura'
+							},
+							ticks: {
+								reverse: false
+							}
+						}]
+					},
+                    pan: {
+						enabled: true,
+						mode: 'xy',
+						speed: 10,
+						threshold: 10
+					},
+                    zoom: {
+						enabled: true,
+						mode: 'y',
+                       
+					},
+					
+					
+					
+                }
+			});
+
+
+		};
+        </script>
+    </body>
+</html>
