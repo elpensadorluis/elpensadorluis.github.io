@@ -1,8 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <title>Ejemplos de Uso de Chartjs</title>
+        <title>Ejemplos Chartjs</title>
         <meta charset="utf-8">
+       
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         <script src="node_modules/chart.js/dist/Chart.bundle.js"></script>
 		<script src="node_modules/hammerjs/hammer.min.js"></script>
 		<script src="node_modules/chartjs-plugin-zoom/chartjs-plugin-zoom.js"></script>
@@ -32,21 +39,23 @@
                 </div>
             </div>
         </nav>
-        <div class="container"> <!-- container -->
+        <div class="container-fluid"> <!-- container -->
             <div class="row">
                 <h3>Ejemplo de zoom</h3>
             </div>
-            <div class="row" style="width:80%">
-                <center>
-                    <canvas id="chart-grafico"></canvas>
-                </center>
-            </div>
+			<div >
+				<div  style="width:100%">
+					<center>
+						<canvas id="chart-grafico"></canvas>
+					</center>
+				</div>
+			</div>
         </div>
         <br>
         <!-- Footer -->
         <footer class="footer text-center">
             <div class="container">
-                <p>chartjs</p>
+                <p></p>
              </div>
         </footer>
         <script>
