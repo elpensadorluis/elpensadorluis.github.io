@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
-        <title>Ejemplos Chartjs</title>
+        <title>Ejemplos de Uso de Chartjs</title>
         <meta charset="utf-8">
-        
         <script src="node_modules/chart.js/dist/Chart.bundle.js"></script>
 		<script src="node_modules/hammerjs/hammer.min.js"></script>
 		<script src="node_modules/chartjs-plugin-zoom/chartjs-plugin-zoom.js"></script>
@@ -61,27 +60,166 @@
 
 
         var lineChartData = {
-			labels : ["0.1","0.3","1.7","3.5","4.7","6.2","7.3"],
 			datasets : [
 				{
-					label: "Primera serie de datos",
+					label: "80.000",
 					fillColor : "rgba(220,220,220,0.2)",
 					strokeColor : "#6b9dfa",
 					pointColor : "#1e45d7",
 					pointStrokeColor : "#fff",
 					pointHighlightFill : "#fff",
 					pointHighlightStroke : "rgba(220,220,220,1)",
-					data : [90,30,10,80,15,5,15],
+					data: [{
+                			x: 2,	y: 20
+            			}, {
+                			x: 3,	y: 30
+            			}, {
+                			x: 5,	y: 10
+            			}, {
+                			x: 8,	y: 80
+            			}, {
+                			x: 13,	y: 10
+            			}, {
+                			x: 21,	y: 75
+            			}, {
+                			x: 34,	y: 5
+            			}, {
+                			x: 55,	y: 35
+            			}, {
+                			x: 89,	y: 20
+            			}, {
+                			x: 144,	y: 5
+            		}]
 				},
 				{
-					label: "Segunda serie de datos",
+					label: "104.444",
 					fillColor : "rgba(151,187,205,0.2)",
 					strokeColor : "#e9e225",
 					pointColor : "#faab12",
 					pointStrokeColor : "#fff",
 					pointHighlightFill : "#fff",
 					pointHighlightStroke : "rgba(151,187,205,1)",
-					data : [40,50,70,40,85,55,15],
+					data: [{
+                			x: 2,	y: 5
+            			}, {
+                			x: 3,	y: 20
+            			}, {
+                			x: 5,	y: 35
+            			}, {
+                			x: 8,	y: 5
+            			}, {
+                			x: 13,	y: 75
+            			}, {
+                			x: 21,	y: 80
+            			}, {
+                			x: 34,	y: 10
+            			}, {
+                			x: 55,	y: 30
+            			}, {
+                			x: 89,	y: 20
+            			}, {
+                			x: 144,	y: 45
+            		}]
+				},
+				{
+					label: "128.880",
+					fillColor : "rgba(151,187,205,0.2)",
+					strokeColor : "#e9e225",
+					pointColor : "#faab12",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(151,187,205,1)",
+					data: [{
+                			x: 2,	y: 40
+            			}, {
+                			x: 3,	y: 50
+            			}, {
+                			x: 5,	y: 70
+            			}, {
+                			x: 8,	y: 40
+            			}, {
+                			x: 13,	y: 85
+            			}, {
+                			x: 21,	y: 55
+            			}, {
+                			x: 34,	y: 15
+            			}, {
+                			x: 55,	y: 40
+            			}, {
+                			x: 89,	y: 50
+            			}, {
+                			x: 144,	y: 70
+            		}]
+				},
+				{
+					label: "153.333",
+					fillColor : "rgba(151,187,205,0.2)",
+					strokeColor : "#e9e225",
+					pointColor : "#faab12",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(151,187,205,1)",
+					data: [{
+                			x: 2,	y: 20
+            			}, {
+                			x: 3,	y: 15
+            			}, {
+                			x: 5,	y: 80
+            			}, {
+                			x: 8,	y: 50
+            			}, {
+                			x: 13,	y: 40
+            			}, {
+                			x: 21,	y: 75
+            			}, {
+                			x: 34,	y: 70
+            			}, {
+                			x: 55,	y: 50
+            			}, {
+                			x: 89,	y: 25
+            			}, {
+                			x: 144,	y: 65
+            		}]
+				},
+				{
+					label: "177.778",
+					fillColor : "rgba(151,187,205,0.2)",
+					strokeColor : "#e9e225",
+					pointColor : "#faab12",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(151,187,205,1)",
+					data: [{
+                			x: 2,	y: 40
+            			}, {
+                			x: 3,	y: 50
+            			}, {
+                			x: 5,	y: 70
+            			}, {
+                			x: 8,	y: 40
+            			}, {
+                			x: 13,	y: 85
+            			}, {
+                			x: 21,	y: 55
+            			}, {
+                			x: 34,	y: 15
+            			}, {
+                			x: 55,	y: 25
+            			}, {
+                			x: 89,	y: 70
+            			}, {
+                			x: 144,	y: 25
+            		}]
+				},
+				{
+					pointRadius: 10,
+					pointColor : "#faab12",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(151,187,205,1)",
+					data: [, , , , {
+                			x: 13,	y: 85
+            			}, , , , , ]
 				}
 			]
 
@@ -91,7 +229,6 @@
         lineChartData.datasets.forEach(function(dataset) {
 			dataset.borderColor = randomColor(0.4);
 			dataset.backgroundColor = "rgba(0,0,0,0)";
-			dataset.borderWidth = 4;
 			dataset.pointBorderColor = randomColor(0.7);
 			dataset.pointBackgroundColor = randomColor(0.5);
 			dataset.pointBorderWidth = 1;
@@ -112,14 +249,12 @@
                     scales: {
 						xAxes: [{
 							position: 'bottom',
+							type: 'linear',
 							scaleLabel: {
 								display: true,
 								labelString: 'Presión'
 							},
-							ticks: {
-								maxRotation: 0,
-								reverse: false
-							}
+							
 						}],
 						yAxes: [{
 							position: 'left',
@@ -134,15 +269,22 @@
 					},
                     pan: {
 						enabled: true,
-						mode: 'y',
+						mode: 'xy',
 						speed: 10,
 						threshold: 10
 					},
                     zoom: {
 						enabled: true,
-						mode: 'y',
+						mode: 'xy',
                        
 					},
+					legend: {
+         				display: true,
+         				position: 'bottom',
+			        	labels: {
+                				fontColor: 'rgb(255, 99, 132)'
+            			}	
+        			}
 					
 					
 					
