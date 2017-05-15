@@ -221,11 +221,20 @@
             		}]
 				},
 				{
+					label: "Punto Burbuja",
 					pointRadius: 10,
 					pointColor : "#faab12",
 					pointStrokeColor : "#fff",
 					pointHighlightFill : "#fff",
 					pointHighlightStroke : "rgba(151,187,205,1)",
+					options: {
+ 			       		legend: {
+            				display: false,
+            				labels: {
+                				fontColor: 'rgb(255, 99, 132)'
+            				}
+        				}
+					},
 					data: [, , , , {
                 			x: 13,	y: 85
             			}, , , , , ]
@@ -242,6 +251,11 @@
 			dataset.pointBackgroundColor = randomColor(0.5);
 			dataset.pointBorderWidth = 1;
 		});
+
+		Chart.defaults.global.animationSteps = 50;
+		Chart.defaults.global.animationEasing = "easeOutElastic";
+		Chart.defaults.global.responsive = true;
+
 	window.onload = function() {
         var ctx = document.getElementById("chart-grafico").getContext("2d");
         window.myPieChart = new Chart(ctx,{
@@ -251,7 +265,8 @@
                 options: {
 					title: {
 						display: true,
-						text: 'Presión vs Temperatura'
+						fontSize: 16,
+						text: 'Formation Oil Volume Factor (Bo) vs. Pressure (P)'
 					},
 					responsive: true,
 					maintainAspectRatio: true,
@@ -261,7 +276,7 @@
 							type: 'linear',
 							scaleLabel: {
 								display: true,
-								labelString: 'Presión'
+								labelString: 'Pressure (P), psis'
 							},
 							
 						}],
@@ -269,7 +284,7 @@
 							position: 'left',
 							scaleLabel: {
 								display: true,
-								labelString: 'Temperatura'
+								labelString: 'Formation Oil Volume Factor (Bo) RBSTB'
 							},
 							ticks: {
 								reverse: false
@@ -291,10 +306,9 @@
          				display: true,
          				position: 'bottom',
 			        	labels: {
-                				fontColor: 'rgb(255, 99, 132)'
+                				fontColor: 'rgb(0, 0, 0)'
             			}	
-        			}
-					
+        			},
 					
 					
                 }
