@@ -27,7 +27,7 @@
 			var dom = document.getElementById("container");
 			var myChart = echarts.init(dom);
 			var app = {};
-		//	option = null;
+			option = null;
 			option = {
 			title: {
 				text: 'Formation Oil Volume Factor (Bo) vs. Pressure (P)',
@@ -121,17 +121,18 @@
                         type : 'jpeg',
                         lang : ['点击本地保存'] 
                     },
-                    //~ myTool : {
-                        //~ show : true,
-                        //~ title : '自定义扩展方法',
-                        //~ icon : 'image://../asset/ico/favicon.png',
-                        //~ onclick : function (){
-                            //~ alert('myToolHandler')
-                        //~ }
-                    //~ }
+                    myTool : {
+                         show : true,
+                         title : 'prueba',
+                         icon : 'icono.png',
+                         onclick : function (){
+                             alert('Hola Mundo ---FUNCIONA---')
+                         }
+                     }
                 }
     
     		},
+    		/* 
     		dataZoom : {
         		show : true,
         		realtime: true,
@@ -153,6 +154,36 @@
 				//~ }
 			//~ },
 			//~ */
+			dataZoom: [
+				/*
+				{
+					type: 'slider',
+					xAxisIndex: 0,
+					start: 10,
+					end: 60
+				},
+				*/
+				{
+					type: 'inside',
+					xAxisIndex: 0,
+					start: 1,
+					end: 100
+				},
+				/*
+				{
+					type: 'slider',
+					yAxisIndex: 0,
+					start: 30,
+					end: 80
+				},
+				*/
+				{
+					type: 'inside',
+					yAxisIndex: 0,
+					start: 50,
+					end: 100
+				}
+			],
 			xAxis:  {
 				type: 'value',
 				name: 'Pressure (P), psis',
