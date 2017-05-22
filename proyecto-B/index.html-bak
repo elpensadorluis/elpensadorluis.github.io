@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+	<head>
+		<meta charset="utf-8">
+		<title>Gráficos de Prueba -v 2.0</title>
+		
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+        <script type="text/javascript" src="echarts.min.js"></script>
+	</head>
+	<body style="height: 100%; margin: 0">
+		<div class="container-fluid" id="container" style="height: 100%"></div>
+
+		<script type="text/javascript">
+//---------------------------------------------------------------------------------------------------------------------------------
+			var indices = {
+    			name: 0,
+    			group: 1,
+    			id: 16
+			};
+			var schema = [
+    			{name: 'name', index: 0},
+    			{name: 'group', index: 1},
+    			{name: 'protein', index: 2},
+    			{name: 'calcium', index: 3},
+    			{name: 'sodium', index: 4},
+    			{name: 'fiber', index: 5},
+    			{name: 'vitaminc', index: 6},
+    			{name: 'potassium', index: 7},
+    			{name: 'carbohydrate', index: 8},
+    			{name: 'sugars', index: 9},
+    			{name: 'fat', index: 10},
+    			{name: 'water', index: 11},
+    			{name: 'calories', index: 12},
+    			{name: 'saturated', index: 13},
+    			{name: 'monounsat', index: 14},
+    			{name: 'polyunsat', index: 15},
+    			{name: 'id', index: 16}
+			];
+
+			var fieldIndices = schema.reduce(function (obj, item) {
+    			obj[item.name] = item.index;
+    			return obj;
+			}, {});
+
+			var groupCategories = [];
+			var groupColors = [];
+			var data;
+//---------------------------------------------------------------------------------------------------------------------------------
+			var dom = document.getElementById("container");
+			var myChart = echarts.init(dom);
+			var app = {};
+            var grueso = 2;
+			option = null;
+			option = {
+                title: {
+                    text: 'Formation Oil Volume Factor (Bo) vs. Pressure (P)',
+                    x: 'center',
+                },
+                tooltip: {
+                    trigger: 'item',
+
+					formatter : function (params) {
+            			if (params.value[1]!='u') {
+                			return 'T=' + params.seriesName + 'º :<br/> P='
+                			+ params.value[0] + ' Bo='
+                			+ params.value[1];
+            			}
+						else{
+							return "Punto de Burbuja";
+						}
+        			},
+
+					/*
+                    formatter: '{a} <br/>{b} : {c}'
+
+					formatter: 'T={a}<br/> P:{c}:Bo',
+				
+					
+					formatter: function(c){
+						var res = c;
+						console.log(res);
+						console.log(res[1][1]);
+        				return res;
+    				}
+					*/
+                },
+                legend: {
+                    data:['180.0000','238.0000','2296.0000','354.0000','pb'],
+                    y: 'bottom',
+                },
+                 toolbox: {
+                    show : true,
+                    feature : {
+                        mark : {show: true, title:'Marca'
+                            
+                        },
+                        dataZoom : {
+                            show : true,
+                            title : 'Zoom',
+                        },
+                        dataView : {
+                            show : true,
+                            title : 'Ver Datos',
+                            readOnly: true,
+                            lang : ['Datos', 'Salir', '刷新'],
+                            
+                        },
+                        magicType: {
+                            show : false,
+                            title : {
+                                line : 'Gráfico de Linea',
+                                bar : 'Gráfico de Barra',
+                                stack : 'Gráfico de Stack',
+                                tiled : 'Gráfico tileado'
+                            },
+                            type : ['line', 'bar', 'stack', 'tiled']
+                        },
+                        restore : {
+                            show : true,
+                            title : 'Restaurar',
+                            color : 'black'
+                        },
+                        saveAsImage : {
+                            show : true,
+                            title : 'Guardar',
+                            type : 'jpeg',
+                            lang : ['点击本地保存'] 
+                        },
+                        myTool : {
+                             show : true,
+                             title : 'prueba',
+                             icon : 'image://icono.png',
+                             onclick : function (){
+                                 console.log('Hola Mundo ---FUNCIONA---')
+                                 grueso = 5
+                             }
+                         }
+                    }
+        
+                },
+                dataZoom: [
+                    {
+                        type: 'inside',
+                        show: true,
+//                      maxSpan: 25,
+                        fiterMode: 'filter',
+                        realtime : true,
+//                      xAxisIndex: 0,
+                        start: 1,
+                        end: 100,
+                        zoomLock: true,
+//                      minSpan: 25,
+//						maxSpan: 100,
+						showDetail:true
+                    },
+                    {
+                        type: 'inside',
+						show: true,
+						fiterMode: 'filter',
+//						minSpan: 20,
+//                      yAxisIndex: 0,
+                        start: 1,
+                        end: 100,
+						zoomLock: true,
+//						minSpan: 25,
+//						maxSpan: 100,
+                    }
+                ],
+                xAxis:  {
+                    type: 'value',
+                    name: 'Pressure (P), psis',
+                    position: 'bottom',
+                    nameLocation: 'middle',
+                    nameGap: 25,
+                    nameTextStyle: {
+                        color: '#000',
+                        fontSize: 14,
+                        fontWeight: 'bold',
+                    },
+                    scale: true,
+                },
+                yAxis: {
+                    type: 'value',
+                    name: 'Formation Oil Volume Factor (Bo) RBSTB',
+                    nameLocation: 'middle',
+                    nameGap: 30,
+                    nameTextStyle: {
+                        color: '#000',
+                        fontSize: 14,
+                        fontWeight: 'bold',
+                    },
+					scale: true,
+                },
+                series: [
+                {
+                    name:'180.0000',
+                    type:'line',
+                    connectNulls: true,
+                    hoverAnimation: true,
+                    dataFilter: 'max',
+                    scaleLimit: 10,
+                    lineStyle: {
+                        normal: {
+                            width: grueso,
+                        }
+                    },
+                    data:[
+						[	1038.000000	,	1.149716	],
+						[	1299.526316	,	1.178865	],
+						[	1561.052632	,	1.209379	],
+						[	1822.578947	,	1.241245	],
+						[	2084.105263	,	1.274456	],
+						[	2345.631579	,	1.309006	],
+						[	2607.157895	,	1.344895	],
+						[	2868.684211	,	1.382122	],
+						[	3130.210526	,	1.420688	],
+						[	3391.736842	,	1.460594	],
+						[	3653.263158	,	1.501841	],
+						[	3914.789474	,	1.544432	],
+						[	4176.315789	,	1.588369	],
+						[	4437.842105	,	1.633655	],
+						[	4699.368421	,	1.680292	],
+						[	4708.877107	,	1.682013	],
+						[	4708.877107	,	1.682013	],
+						[	4960.894737	,	1.677016	],
+						[	5222.421053	,	1.672355	],
+						[	5483.947368	,	1.668149	],
+						[	5745.473684	,	1.664335	],
+						[	6007.000000	,	1.660861	],
+                    ],
+                    markPoint: {
+                    	silent: false,
+                		symbol: 'circle',
+						symbolSize: 10,
+                		data: [
+                			{name: 'pb', value:'Punto Burbuja', xAxis:4708.877107, yAxis: 1.682013},
+                		],
+                		label: {
+							normal: {
+								show: false,
+								position: 'inside',
+//								offset: [...],
+								formatter: 'Pb',
+
+//    							textStyle: {...},
+    						},
+
+						},
+//						showEffectOn: 'render',
+            			rippleEffect: {
+                			brushType: 'stroke'
+            			},
+//            			hoverAnimation: true,
+            			itemStyle: {
+                			normal: {
+                    			color: '#000000',
+                    			shadowBlur: 10,
+                    			shadowColor: '#333'
+                			}
+            			},
+            			zlevel: 2
+            		},
+                },
+                {
+                    name:'238.0000',
+                    type:'line',
+                    data:[
+						[	1038.000000	,	1.187614	],
+						[	1299.526316	,	1.212993	],
+						[	1561.052632	,	1.239467	],
+						[	1822.578947	,	1.267021	],
+						[	2084.105263	,	1.295647	],
+						[	2345.631579	,	1.325340	],
+						[	2607.157895	,	1.356098	],
+						[	2868.684211	,	1.387918	],
+						[	3130.210526	,	1.420801	],
+						[	3391.736842	,	1.454748	],
+						[	3653.263158	,	1.489758	],
+						[	3914.789474	,	1.525833	],
+						[	4176.315789	,	1.562975	],
+						[	4437.842105	,	1.601184	],
+						[	4699.368421	,	1.640463	],
+						[	4960.894737	,	1.680813	],
+						[	5222.421053	,	1.722237	],
+						[	5283.493442	,	1.732065	],
+						[	5283.493442	,	1.732065	],
+						[	5483.947368	,	1.727425	],
+						[	5745.473684	,	1.721875	],
+						[	6007.000000	,	1.716824	],
+                    ],
+                    markPoint: {
+                    	silent: false,
+                		symbol: 'circle',
+						symbolSize: 10,
+                		data: [
+                			{name: 'pb', value:'Punto Burbuja', xAxis:5283.493442, yAxis: 1.732065},
+                		],
+                		label: {
+							normal: {
+								show: false,
+								position: 'inside',
+//								offset: [...],
+								formatter: 'Pb',
+
+//    							textStyle: {...},
+    						},
+
+						},
+//						showEffectOn: 'render',
+            			rippleEffect: {
+                			brushType: 'stroke'
+            			},
+//            			hoverAnimation: true,
+            			itemStyle: {
+                			normal: {
+                    			color: '#000000',
+                    			shadowBlur: 10,
+                    			shadowColor: '#333'
+                			}
+            			},
+            			zlevel: 2
+            		},
+                    
+                    
+                },
+                {
+                    name:'296.0000',
+                    type:'line',
+                    data:[
+                    	[	1038.000000	,	1.227851	],
+						[	1299.526316	,	1.250231	],
+						[	1561.052632	,	1.273504	],
+						[	1822.578947	,	1.297658	],
+						[	2084.105263	,	1.322683	],
+						[	2345.631579	,	1.348575	],
+						[	2607.157895	,	1.375329	],
+						[	2868.684211	,	1.402945	],
+						[	3130.210526	,	1.431421	],
+						[	3391.736842	,	1.460756	],
+						[	3653.263158	,	1.490952	],
+						[	3914.789474	,	1.522008	],
+						[	4176.315789	,	1.553925	],
+						[	4437.842105	,	1.586705	],
+						[	4699.368421	,	1.620347	],
+						[	4960.894737	,	1.654854	],
+						[	5222.421053	,	1.690226	],
+						[	5483.947368	,	1.726464	],
+						[	5745.473684	,	1.763571	],
+						[	5873.939232	,	1.782116	],
+						[	5873.939232	,	1.782116	],
+						[	6007.000000	,	1.778638	],
+					],
+                    markPoint: {
+                    	silent: false,
+                		symbol: 'circle',
+						symbolSize: 10,
+                		data: [
+                			{name: 'pb', value:'Punto Burbuja', xAxis:5873.939232, yAxis: 1.782116},
+                		],
+                		label: {
+							normal: {
+								show: false,
+								position: 'inside',
+//								offset: [...],
+								formatter: 'Pb',
+
+//    							textStyle: {...},
+    						},
+
+						},
+//						showEffectOn: 'render',
+            			rippleEffect: {
+                			brushType: 'stroke'
+            			},
+//            			hoverAnimation: true,
+            			itemStyle: {
+                			normal: {
+                    			color: '#000000',
+                    			shadowBlur: 10,
+                    			shadowColor: '#333'
+                			}
+            			},
+            			zlevel: 2
+            		},
+                },
+                {
+                    name:'354.0000',
+                    type:'line',
+                    data:[
+                    	[	1038.000000	,	1.269835	],
+						[	1299.526316	,	1.289779	],
+						[	1561.052632	,	1.310466	],
+						[	1822.578947	,	1.331882	],
+						[	2084.105263	,	1.354018	],
+						[	2345.631579	,	1.376869	],
+						[	2607.157895	,	1.400431	],
+						[	2868.684211	,	1.424703	],
+						[	3130.210526	,	1.449682	],
+						[	3391.736842	,	1.475368	],
+						[	3653.263158	,	1.501761	],
+						[	3914.789474	,	1.528861	],
+						[	4176.315789	,	1.556667	],
+						[	4437.842105	,	1.585181	],
+						[	4699.368421	,	1.614404	],
+						[	4960.894737	,	1.644334	],
+						[	5222.421053	,	1.674975	],
+						[	5483.947368	,	1.706325	],
+						[	5745.473684	,	1.738387	],
+						[	6007.000000	,	1.771161	],
+					],
+                },
+                ]
+			};
+			;
+			var fieldNames = schema.map(function (item) {
+    			return item.name;
+			}).slice(2);
+			app.config = {
+    			xAxis: 'protein',
+    			yAxis: 'calcium',
+    			onChange: function () {
+        			if (data) {
+            			myChart.setOption({
+                			xAxis: {
+                    			name: app.config.xAxis
+                			},
+                			yAxis: {
+                    			name: app.config.yAxis
+                			},
+                			series: {
+                    			data: data.map(function (item, idx) {
+                        			return [
+                            			item[fieldIndices[app.config.xAxis]],
+                            			item[fieldIndices[app.config.yAxis]],
+                            			item[1],
+                            			idx
+                        			];
+                    			})
+                			}
+            			});
+        			}
+    			}
+			};
+
+			app.configParameters = {
+    			xAxis: {
+        			options: fieldNames
+    			},
+    			yAxis: {
+        			options: fieldNames
+    			}
+			};
+			if (option && typeof option === "object") {
+				myChart.setOption(option, true);
+			}
+		</script>
+	</body>
+</html>
