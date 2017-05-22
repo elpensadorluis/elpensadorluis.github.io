@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+	<head>
+		<meta charset="utf-8">
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<!--
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts-all-3.js"></script>
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+		<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+-->
+        <script type="text/javascript" src="echarts.min.js"></script>
+	</head>
+	<body style="height: 100%; margin: 0">
+		<div class="container-fluid" id="container" style="height: 100%"></div>
+
+		<script type="text/javascript">
+			var dom = document.getElementById("container");
+			var myChart = echarts.init(dom);
+			var app = {};
+			option = null;
+			option = {
+			title: {
+				text: 'Formation Oil Volume Factor (Bo) vs. Pressure (P)',
+			},
+			tooltip: {
+				trigger: 'axis'
+			},
+			legend: {
+				data:['80.0000','153.3333','226.6666','300.0000'],
+				y: 'bottom',
+			},
+		//~ /*
+			//~ dataZoom: {
+				//~ zlevel: 0,
+				//~ z: 4,
+				//~ show: false,
+				//~ orient: 'horizontal',
+				//~ x: <自适应>,
+				//~ y: <自适应>,
+				//~ width: <自适应 | 30>,
+				//~ height: <自适应 | 30>,
+				//~ backgroundColor: 'rgba(0,0,0,0)',
+				//~ dataBackgroundColor: '#eee',
+				//~ fillerColor: 'rgba(144,197,237,0.2...',
+				//~ handleColor: 'rgba(70,130,180,0.8)',
+				//~ handleSize: 8,
+				//~ xAxisIndex: null,
+				//~ yAxisIndex: null,
+				//~ start: 0,
+				//~ end: 100,
+				//~ showDetail: true,
+				//~ realtime: false,
+				//~ zoomLock: false,
+			//~ },
+			//~ */
+			 toolbox: {
+      		  	show : true,
+        		feature : {
+                    //~ mark : {
+                        //~ show : true,
+                        //~ title : {
+                            //~ mark : 'Marcar',
+                            //~ markUndo : 'Deshacer Marca',
+                            //~ markClear : 'Borrar Marca'
+                        //~ },
+                        //~ lineStyle : {
+                            //~ width : 1,
+                            //~ color : '#1e90ff',
+                            //~ type : 'dashed'
+                        //~ }
+                    //~ },
+                    mark : {show: true, title:'Marca'
+                        
+                    },
+                    //~ dataZoom : {
+                        //~ show : true,
+                        //~ title : {
+                            //~ dataZoom : 'Zoom',
+                            //~ dataZoomReset : 'Restablecer Zoom'
+                        //~ }
+                    //~ },
+                    dataZoom : {
+                        show : true,
+                        title : 'Zoom',
+                    },
+                    dataView : {
+                        show : false,
+                        title : 'Ver Datos',
+                        readOnly: true,
+                        lang : ['español', '关闭', '刷新'],
+                        
+                    },
+                    magicType: {
+                        show : false,
+                        title : {
+                            line : 'Gráfico de Linea',
+                            bar : 'Gráfico de Barra',
+                            stack : 'Gráfico de Stack',
+                            tiled : 'Gráfico tileado'
+                        },
+                        type : ['line', 'bar', 'stack', 'tiled']
+                    },
+                    restore : {
+                        show : true,
+                        title : 'Restaurar',
+                        color : 'black'
+                    },
+                    saveAsImage : {
+                        show : true,
+                        title : 'Guardar',
+                        type : 'jpeg',
+                        lang : ['点击本地保存'] 
+                    },
+                    myTool : {
+                         show : true,
+                         title : 'prueba',
+                         icon : 'image://icono.png',
+                         onclick : function (){
+                             alert('Hola Mundo ---FUNCIONA---')
+                         }
+                     }
+                }
+    
+    		},
+    		/* 
+    		dataZoom : {
+        		show : true,
+        		realtime: true,
+        		start : 50,
+        		end : 100,
+				orient: 'vertical',
+    		},
+			//~ /*
+			//~ toolbox: {
+				//~ show: true,
+				//~ feature: {
+					//~ dataZoom: {
+						//~ yAxisIndex: 'none'
+					//~ },
+					//~ dataView: {readOnly: false},
+					//~ magicType: {type: ['line', 'bar']},
+					//~ restore: {},
+					//~ saveAsImage: {}
+				//~ }
+			//~ },
+			//~ */
+			dataZoom: [
+				/*
+				{
+					type: 'slider',
+					xAxisIndex: 0,
+					start: 10,
+					end: 60
+				},
+				*/
+				{
+					type: 'inside',
+					xAxisIndex: 0,
+					start: 1,
+					end: 100
+				},
+				/*
+				{
+					type: 'slider',
+					yAxisIndex: 0,
+					start: 30,
+					end: 80
+				},
+				*/
+				{
+					type: 'inside',
+					yAxisIndex: 0,
+					start: 50,
+					end: 100
+				}
+			],
+			xAxis:  {
+				type: 'value',
+				name: 'Pressure (P), psis',
+				position: 'bottom',
+				nameLocation: 'middle',
+				nameGap: 25,
+				nameTextStyle: {
+					color: '#000',
+					fontSize: 14,
+					fontWeight: 'bold',
+				},
+			},
+			yAxis: {
+				type: 'value',
+				name: 'Formation Oil Volume Factor (Bo) RBSTB',
+				nameLocation: 'middle',
+				nameGap: 30,
+				nameTextStyle: {
+					color: '#000',
+					fontSize: 14,
+					fontWeight: 'bold',
+				},
+			},
+			series: [
+			{
+				name:'80.0000',
+				type:'line',
+				data:[
+					[	100.000000	,	0.973182	],
+					[	560.000000	,	1.027986	],
+					[	1020.000000	,	1.090120	],
+					[	1480.000000	,	1.158916	],
+					[	1940.000000	,	1.234243	],
+					[	2400.000000	,	1.316072	],
+					[	2860.000000	,	1.404406	],
+					[	3320.000000	,	1.499264	],
+					[	3758.198679	,	1.595716	],
+					[	3758.198679	,	1.595716	],
+					[	3780.000000	,	1.595413	],
+					[	4240.000000	,	1.589741	],
+					[	4700.000000	,	1.585194	],
+					[	5160.000000	,	1.581467	],
+					[	5620.000000	,	1.578358	],
+					[	6080.000000	,	1.575723	],
+					[	6540.000000	,	1.573463	],
+					[	7000.000000	,	1.571502	],
+
+				],
+				markPoint: {
+					data: [
+					{type: 'max', name: 'algo2'}
+					]
+				},
+			},
+			{
+				name:'153.3333',
+				type:'line',
+				data:[
+					[	100.000000	,	1.034779	],
+					[	560.000000	,	1.080288	],
+					[	1020.000000	,	1.131213	],
+					[	1480.000000	,	1.186958	],
+					[	1940.000000	,	1.247390	],
+					[	2400.000000	,	1.312466	],
+					[	2860.000000	,	1.382178	],
+					[	3320.000000	,	1.456530	],
+					[	3780.000000	,	1.535532	],
+					[	4240.000000	,	1.619200	],
+					[	4450.255056	,	1.659000	],
+					[	4450.255056	,	1.659000	],
+					[	4700.000000	,	1.654445	],
+					[	5160.000000	,	1.647234	],
+					[	5620.000000	,	1.641227	],
+					[	6080.000000	,	1.636147	],
+					[	6540.000000	,	1.631793	],
+					[	7000.000000	,	1.628022	],
+
+				],
+				markPoint: {
+					data: [
+					{name: 'Punto Burbuja', value: 2, xAxis: 3320, yAxis: 1.45653}
+					]
+				},
+			},
+			{
+				name:'226.6666',
+				type:'line',
+				data:[
+					[	100.000000	,	1.096799	],
+					[	560.000000	,	1.135443	],
+					[	1020.000000	,	1.178252	],
+					[	1480.000000	,	1.224691	],
+					[	1940.000000	,	1.274631	],
+					[	2400.000000	,	1.328025	],
+					[	2860.000000	,	1.384857	],
+					[	3320.000000	,	1.445124	],
+					[	3780.000000	,	1.508828	],
+					[	4240.000000	,	1.575977	],
+					[	4700.000000	,	1.646580	],
+					[	5160.000000	,	1.720646	],
+					[	5169.939759	,	1.722284	],
+					[	5169.939759	,	1.722284	],
+					[	5620.000000	,	1.712591	],
+					[	6080.000000	,	1.704210	],
+					[	6540.000000	,	1.697041	],
+					[	7000.000000	,	1.690839	],
+				],
+				markPoint: {
+					data: [
+					{type: 'max', name: 'algo1'},
+
+					]
+				},
+			},
+			{
+				name:'300.0000',
+				type:'line',
+				data:[
+					[	100.000000	,	1.159105	],
+					[	560.000000	,	1.192502	],
+					[	1020.000000	,	1.229201	],
+					[	1480.000000	,	1.268723	],
+					[	1940.000000	,	1.310946	],
+					[	2400.000000	,	1.355822	],
+					[	2860.000000	,	1.403330	],
+					[	3320.000000	,	1.453463	],
+					[	3780.000000	,	1.506219	],
+					[	4240.000000	,	1.561601	],
+					[	4700.000000	,	1.619614	],
+					[	5160.000000	,	1.680263	],
+					[	5620.000000	,	1.743554	],
+					[	5915.221371	,	1.785568	],
+					[	5915.221371	,	1.785568	],
+					[	6080.000000	,	1.781256	],
+					[	6540.000000	,	1.770415	],
+					[	7000.000000	,	1.761052	],
+				],
+				markPoint: {
+					data: [
+					{type: 'max', name: '最大值'},
+
+					]
+				},
+			},
+			]
+			};
+			;
+			if (option && typeof option === "object") {
+			myChart.setOption(option, true);
+			}
+		</script>
+	</body>
+</html>
