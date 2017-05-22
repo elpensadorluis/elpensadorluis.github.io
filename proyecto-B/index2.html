@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Ejemplos Chartjs</title>
+        <meta charset="utf-8">
+       
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script src="node_modules/chart.js/dist/Chart.bundle.js"></script>
+		<script src="node_modules/hammerjs/hammer.min.js"></script>
+		<script src="node_modules/chartjs-plugin-zoom/chartjs-plugin-zoom.js"></script>
+		<style>
+	        canvas {
+		        -moz-user-select: none;
+		        -webkit-user-select: none;
+		        -ms-user-select: none;
+	        }
+        </style>
+    </head>
+    <body>
+        <!-- Navbar -->
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">CHARTJS</a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav navbar-right">
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container-fluid"> <!-- container -->
+            <div class="row">
+                <h3>Ejemplo de zoom</h3>
+            </div>
+			<div >
+				<div  style="width:100%">
+					<center>
+						<canvas id="chart-grafico"></canvas>
+					</center>
+				</div>
+			</div>
+        </div>
+        <br>
+        <!-- Footer -->
+        <footer class="footer text-center">
+            <div class="container">
+                <p></p>
+             </div>
+        </footer>
+        <script>
+
+        var randomScalingFactor = function() {
+			return (Math.random() > 0.5 ? 1.0 : -1.0) * Math.round(Math.random() * 100);
+		};
+        var randomColor = function(opacity) {
+			return 'rgba(' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + Math.round(Math.random() * 255) + ',' + (opacity || '.3') + ')';
+		};
+
+
+        var lineChartData = {
+			datasets : [
+				{
+					label: "80.000",
+					fillColor : "rgba(220,220,220,0.2)",
+					strokeColor : "#6b9dfa",
+					pointColor : "#1e45d7",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(220,220,220,1)",
+					data: [{
+                			x: 2,	y: 20
+            			}, {
+                			x: 3,	y: 30
+            			}, {
+                			x: 5,	y: 10
+            			}, {
+                			x: 8,	y: 80
+            			}, {
+                			x: 13,	y: 10
+            			}, {
+                			x: 21,	y: 75
+            			}, {
+                			x: 34,	y: 5
+            			}, {
+                			x: 55,	y: 35
+            			}, {
+                			x: 89,	y: 20
+            			}, {
+                			x: 144,	y: 5
+            		}]
+				},
+				{
+					label: "104.444",
+					borderDash: [8, 8],
+					fillColor : "rgba(151,187,205,0.2)",
+					strokeColor : "#e9e225",
+					pointColor : "#faab12",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(151,187,205,1)",
+					data: [{
+                			x: 2,	y: 5
+            			}, {
+                			x: 3,	y: 20
+            			}, {
+                			x: 5,	y: 35
+            			}, {
+                			x: 8,	y: 5
+            			}, {
+                			x: 13,	y: 75
+            			}, {
+                			x: 21,	y: 80
+            			}, {
+                			x: 34,	y: 10
+            			}, {
+                			x: 55,	y: 30
+            			}, {
+                			x: 89,	y: 20
+            			}, {
+                			x: 144,	y: 45
+            		}]
+				},
+				{
+					label: "128.880",
+					fillColor : "rgba(151,187,205,0.2)",
+					strokeColor : "#e9e225",
+					pointColor : "#faab12",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(151,187,205,1)",
+					data: [{
+                			x: 2,	y: 40
+            			}, {
+                			x: 3,	y: 50
+            			}, {
+                			x: 5,	y: 70
+            			}, {
+                			x: 8,	y: 40
+            			}, {
+                			x: 13,	y: 85
+            			}, {
+                			x: 21,	y: 55
+            			}, {
+                			x: 34,	y: 15
+            			}, {
+                			x: 55,	y: 40
+            			}, {
+                			x: 89,	y: 50
+            			}, {
+                			x: 144,	y: 70
+            		}]
+				},
+				{
+					label: "153.333",
+					borderDash: [0, 0],
+					fillColor : "rgba(151,187,205,0.2)",
+					strokeColor : "#e9e225",
+					pointColor : "#faab12",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(151,187,205,1)",
+					data: [{
+                			x: 2,	y: 20
+            			}, {
+                			x: 3,	y: 15
+            			}, {
+                			x: 5,	y: 80
+            			}, {
+                			x: 8,	y: 50
+            			}, {
+                			x: 13,	y: 40
+            			}, {
+                			x: 21,	y: 75
+            			}, {
+                			x: 34,	y: 70
+            			}, {
+                			x: 55,	y: 50
+            			}, {
+                			x: 89,	y: 25
+            			}, {
+                			x: 144,	y: 65
+            		}]
+				},
+				{
+					label: "177.778",
+					fillColor : "rgba(151,187,205,0.2)",
+					strokeColor : "#e9e225",
+					pointColor : "#faab12",
+					pointStrokeColor : "#fff",
+					borderDash: [2, 2],
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(151,187,205,1)",
+					data: [{
+                			x: 2,	y: 20
+            			}, {
+                			x: 3,	y: 30
+            			}, {
+                			x: 5,	y: 0
+            			}, {
+                			x: 8,	y: 10
+            			}, {
+                			x: 13,	y: 25
+            			}, {
+                			x: 21,	y: 55
+            			}, {
+                			x: 34,	y: 15
+            			}, {
+                			x: 55,	y: 25
+            			}, {
+                			x: 89,	y: 70
+            			}, {
+                			x: 144,	y: 25
+            		}]
+				},
+				{
+					label: "Punto Burbuja",
+					pointRadius: 10,
+					pointColor : "#faab12",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(151,187,205,1)",
+					options: {
+ 			       		legend: {
+            				display: false,
+            				labels: {
+                				fontColor: 'rgb(255, 99, 132)'
+            				}
+        				}
+					},
+					data: [, , , , {
+                			x: 13,	y: 85
+            			}, , , , , ]
+				}
+			]
+
+		}
+
+
+        lineChartData.datasets.forEach(function(dataset) {
+			dataset.borderColor = randomColor(0.4);
+			dataset.backgroundColor = "rgba(0,0,0,0)";
+			dataset.pointBorderColor = randomColor(0.7);
+			dataset.pointBackgroundColor = randomColor(0.5);
+			dataset.pointBorderWidth = 1;
+		});
+
+		Chart.defaults.global.animationSteps = 50;
+		Chart.defaults.global.animationEasing = "easeOutElastic";
+		Chart.defaults.global.responsive = true;
+
+	window.onload = function() {
+        var ctx = document.getElementById("chart-grafico").getContext("2d");
+        window.myPieChart = new Chart(ctx,{
+				animationEnabled: true,
+                type: 'line',
+                data: lineChartData,
+                options: {
+					title: {
+						display: true,
+						fontSize: 16,
+						text: 'Formation Oil Volume Factor (Bo) vs. Pressure (P)'
+					},
+					responsive: true,
+					maintainAspectRatio: true,
+                    scales: {
+						xAxes: [{
+							position: 'bottom',
+							type: 'linear',
+							scaleLabel: {
+								display: true,
+								labelString: 'Pressure (P), psis'
+							},
+							
+						}],
+						yAxes: [{
+							position: 'left',
+							scaleLabel: {
+								display: true,
+								labelString: 'Formation Oil Volume Factor (Bo) RBSTB'
+							},
+							ticks: {
+								reverse: false
+							}
+						}]
+					},
+                    pan: {
+						enabled: true,
+						mode: 'xy',
+						speed: 10,
+						threshold: 10
+					},
+                    zoom: {
+						enabled: true,
+						mode: 'xy',
+                       
+					},
+					legend: {
+         				display: true,
+         				position: 'bottom',
+			        	labels: {
+                				fontColor: 'rgb(0, 0, 0)'
+            			}	
+        			},
+					
+					
+                }
+			});
+
+
+		};
+        </script>
+    </body>
+</html>
