@@ -16,41 +16,7 @@
 		<div class="container-fluid" id="container" style="height: 100%"></div>
 
 		<script type="text/javascript">
-//---------------------------------------------------------------------------------------------------------------------------------
-			var indices = {
-    			name: 0,
-    			group: 1,
-    			id: 16
-			};
-			var schema = [
-    			{name: 'name', index: 0},
-    			{name: 'group', index: 1},
-    			{name: 'protein', index: 2},
-    			{name: 'calcium', index: 3},
-    			{name: 'sodium', index: 4},
-    			{name: 'fiber', index: 5},
-    			{name: 'vitaminc', index: 6},
-    			{name: 'potassium', index: 7},
-    			{name: 'carbohydrate', index: 8},
-    			{name: 'sugars', index: 9},
-    			{name: 'fat', index: 10},
-    			{name: 'water', index: 11},
-    			{name: 'calories', index: 12},
-    			{name: 'saturated', index: 13},
-    			{name: 'monounsat', index: 14},
-    			{name: 'polyunsat', index: 15},
-    			{name: 'id', index: 16}
-			];
 
-			var fieldIndices = schema.reduce(function (obj, item) {
-    			obj[item.name] = item.index;
-    			return obj;
-			}, {});
-
-			var groupCategories = [];
-			var groupColors = [];
-			var data;
-//---------------------------------------------------------------------------------------------------------------------------------
 			var dom = document.getElementById("container");
 			var myChart = echarts.init(dom);
 			var app = {};
@@ -200,6 +166,7 @@
                 {
                     name:'180.0000',
                     type:'line',
+                    symbolSize: 8,
                     connectNulls: true,
                     hoverAnimation: true,
                     dataFilter: 'max',
@@ -207,7 +174,8 @@
                     lineStyle: {
                         normal: {
                             width: grueso,
-                        }
+                            type: 'dashed',
+                        },
                     },
                     data:[
 						[	1038.000000	,	1.149716	],
@@ -269,6 +237,14 @@
                 {
                     name:'238.0000',
                     type:'line',
+                    symbol: 'rect',
+                    symbolSize: 8,
+                    lineStyle: {
+                        normal: {
+                            width: grueso,
+                            type: 'dotted',
+                        }
+                    },
                     data:[
 						[	1038.000000	,	1.187614	],
 						[	1299.526316	,	1.212993	],
@@ -331,6 +307,8 @@
                 {
                     name:'296.0000',
                     type:'line',
+                    symbol: 'triangle',
+                    symbolSize: 8,
                     data:[
                     	[	1038.000000	,	1.227851	],
 						[	1299.526316	,	1.250231	],
@@ -391,6 +369,8 @@
                 {
                     name:'354.0000',
                     type:'line',
+                    symbol: 'arrow',
+                    symbolSize: 8,
                     data:[
                     	[	1038.000000	,	1.269835	],
 						[	1299.526316	,	1.289779	],
@@ -417,44 +397,7 @@
                 ]
 			};
 			;
-			var fieldNames = schema.map(function (item) {
-    			return item.name;
-			}).slice(2);
-			app.config = {
-    			xAxis: 'protein',
-    			yAxis: 'calcium',
-    			onChange: function () {
-        			if (data) {
-            			myChart.setOption({
-                			xAxis: {
-                    			name: app.config.xAxis
-                			},
-                			yAxis: {
-                    			name: app.config.yAxis
-                			},
-                			series: {
-                    			data: data.map(function (item, idx) {
-                        			return [
-                            			item[fieldIndices[app.config.xAxis]],
-                            			item[fieldIndices[app.config.yAxis]],
-                            			item[1],
-                            			idx
-                        			];
-                    			})
-                			}
-            			});
-        			}
-    			}
-			};
 
-			app.configParameters = {
-    			xAxis: {
-        			options: fieldNames
-    			},
-    			yAxis: {
-        			options: fieldNames
-    			}
-			};
 			if (option && typeof option === "object") {
 				myChart.setOption(option, true);
 			}
