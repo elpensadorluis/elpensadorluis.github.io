@@ -2,7 +2,7 @@
 <meta charset="utf-8">
 <style>
     .node {
-        stroke: rgb(14, 116, 199);
+        /* stroke: rgb(14, 116, 199); */
         stroke-width: 2px;
         font: 10px sans-serif;
         /* pointer-events: none; */
@@ -36,6 +36,7 @@
         root.py = root.y;
         root.valor = 12;
         root.listo = 0;
+        root.color = "rgb(14, 116, 199)";
 
         // var aleatorio = [0, ];
 
@@ -85,7 +86,7 @@
             if (nodes[jo].valor - matriz[contador] >= 0) {
 
 
-                // if (nodes.length >= 500) return clearInterval(timer);
+                if (tictac <= 0) return clearInterval(timer);
 
 
                 // Add a new node to a random parent.
@@ -94,19 +95,17 @@
                 var n = {
                         id: nodes.length,
                         valor: nodes[jo].valor - matriz[contador],
-                        listo: 0
+                        listo: 0,
+                        color: "rgb(14, 116, 199)"
                     },
                     p = nodes[jo];
                 if (nodes[jo].valor - matriz[contador] <= 0) {
                     n.listo = 1;
+                    n.color = "rgb(255, 0, 0)";
                     // // aleatorio = aleatorio.filter(function (i) {
                     //     return i !== nodes[jo].id
                     // });
-                    tictac++;
-                    if (nodes.length+1 == tictac) {
-                        return clearInterval(timer);
-                        console.log("Análisis Completado...");
-                    }
+                    tictac--;
 
                 }
 
@@ -117,6 +116,7 @@
 
                 } else p.children = [n];
                 nodes.push(n);
+                tictac++;
                 // aleatorio.push(nodes.length - 1);
 
 
@@ -141,6 +141,9 @@
                     .attr("r", 10)
                     .attr("cx", function (d) {
                         return d.parent.px;
+                    })
+                    .style("stroke", function (d) {
+                        return d.color;
                     })
                     .attr("cy", function (d) {
                         return d.parent.py;
@@ -188,8 +191,12 @@
                     .attr("cx", function (d) {
                         return d.px = d.x;
                     })
+
                     .attr("cy", function (d) {
                         return d.py = d.y;
+                    })
+                    .style("stroke", function (d) {
+                        return d.color;
                     });
 
                 t.selectAll(".text")
@@ -207,7 +214,7 @@
             }
             if (contador > 1) {
                 nodes[jo].listo = 1;
-                tictac++;
+                tictac--;
                 // // aleatorio = aleatorio.filter(function (i) {
                 //     return i !== nodes[jo].id
                 // });
@@ -252,6 +259,10 @@
             } else {
                 contador++;
                 // jo++;
+            }
+            if (nodes.length + 1 == tictac) {
+                clearInterval(timer);
+                console.log("Análisis Completado...");
             }
 
         }
