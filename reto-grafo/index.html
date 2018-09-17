@@ -77,7 +77,7 @@
         var contador = 0;
         var jo = 0;
 
-        var tictac = 0;
+        var tictac = 1;
 
 
 
@@ -86,7 +86,11 @@
             if (nodes[jo].valor - matriz[contador] >= 0) {
 
 
-                if (tictac <= 0) return clearInterval(timer);
+                // if (tictac <= 0) return clearInterval(timer);
+                if (tictac <= 0) {
+                    console.log("Análisis Completado Exitosamente...");
+                    return clearInterval(timer);
+                }
 
 
                 // Add a new node to a random parent.
@@ -204,8 +208,8 @@
                         return d.px = d.x;
                     })
                     .text(function (d) {
-                        // return d.listo;
-                        return d.valor;
+                        return d.listo;
+                        // return d.valor;
                     })
                     .attr("y", function (d) {
                         return d.py = d.y + 3;
@@ -215,68 +219,34 @@
             if (contador > 1) {
                 nodes[jo].listo = 1;
                 tictac--;
-                // // aleatorio = aleatorio.filter(function (i) {
-                //     return i !== nodes[jo].id
-                // });
-
-                var loteria = false;
-                // jo = randomNoRepeats(aleatorio);
-
-
-                // console.log(aleatorio);
-                // jo = Math.floor(Math.random() * aleatorio.length);
-                // name = aleatorio.splice(jo, 1);
-                // aleatorio.push(name);
-
-
-
-                console.log("el vendito " + jo);
-                jo = 0;
-                if (nodes.length - tictac <= 3) {
-                    jo = 0;
-                    while (nodes[jo].listo == 1) {
-                        jo++;
-                    }
-                    // clearInterval(timer);
-                } else {
-                    while (nodes[jo].listo == 1) {
-                        // if (nodes[jo].valor - matriz[contador]==1) {
-                        //     loteria = true;
-                        // }
-
-                        // jo = Math.random() * nodes.length | 0;
-                        jo = Math.floor(Math.random() * nodes.length);
-                        // jo++;
-
-                        // jo = nodes[Math.floor(Math.random()*nodes.length)];
-
-                    }
-                    // if (nodes[jo].listo == 0) {
-                    //     loteria = true;
+                // if (tictac <= 0) return clearInterval(timer);
+                if (tictac <= 0) {
+                    console.log("Análisis Completado Exitosamente...");
+                    return clearInterval(timer);
                 }
+                jo = 0;
+               
+                while (nodes[jo].listo == 1) {
+                    if (tictac < 4) {
+                        jo++;
+                    } else {
+                        jo = Math.floor(Math.random() * nodes.length);
+                    }
+                    
+                }        
+                        
 
                 contador = 0;
             } else {
                 contador++;
                 // jo++;
             }
-            if (nodes.length + 1 == tictac) {
-                clearInterval(timer);
-                console.log("Análisis Completado...");
-            }
+            // if (nodes.length + 1 == tictac) {
+            //     clearInterval(timer);
+            //     console.log("Análisis Completado...");
+            // }
 
         }
 
-        function randomNoRepeats(array) {
-            var copy = array.slice(0);
-            return function () {
-                if (copy.length < 1) {
-                    copy = array.slice(0);
-                }
-                var index = Math.floor(Math.random() * copy.length);
-                var item = copy[index];
-                copy.splice(index, 1);
-                return item;
-            };
-        }
+
     </script>
