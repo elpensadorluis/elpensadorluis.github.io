@@ -36,28 +36,14 @@
         root.py = root.y;
         root.valor = 12;
         root.listo = 0;
+        root.id = 0;
         root.color = "rgb(14, 116, 199)";
 
-        // var aleatorio = [0, ];
 
         var nodes = tree(root),
             base = 1,
             matriz = [10, 6, 1];
 
-
-        // //rutina de prueba primer chicharron:
-        // var m = {
-        //             id: nodes.length,
-        //             valor: nodes.length
-        //         };
-
-        // if (nodes[0].children) {
-        //     nodes[0].children.push(m);
-        //     // console.log( p.children);
-        // } else nodes[0].children = [m];
-        // nodes.push(m);
-
-        // nodes[0].children.listo = 0;
 
         var diagonal = d3.svg.diagonal();
 
@@ -71,13 +57,13 @@
             link = svg.selectAll(".link"),
             text = svg.selectAll(".text");
 
-        var duration = 400,
-            timer = setInterval(update, duration);
-
         var contador = 0;
         var jo = 0;
-
         var tictac = 1;
+        var imprimir = 2;
+
+        var duration = 400,
+            timer = setInterval(update, duration);
 
 
 
@@ -85,17 +71,12 @@
 
             if (nodes[jo].valor - matriz[contador] >= 0) {
 
-
-                // if (tictac <= 0) return clearInterval(timer);
                 if (tictac <= 0) {
                     console.log("Análisis Completado Exitosamente...");
                     return clearInterval(timer);
                 }
 
-
-                // Add a new node to a random parent.
-                console.log(contador);
-
+                // Agrega un nuevo nodo a un pariente aleatorio.
                 var n = {
                         id: nodes.length,
                         valor: nodes[jo].valor - matriz[contador],
@@ -106,14 +87,10 @@
                 if (nodes[jo].valor - matriz[contador] <= 0) {
                     n.listo = 1;
                     n.color = "rgb(255, 0, 0)";
-                    // // aleatorio = aleatorio.filter(function (i) {
-                    //     return i !== nodes[jo].id
-                    // });
+
                     tictac--;
 
                 }
-
-                // for (var i = 0; i < 3; i++) {
 
                 if (p.children) {
                     p.children.push(n);
@@ -121,12 +98,8 @@
                 } else p.children = [n];
                 nodes.push(n);
                 tictac++;
-                // aleatorio.push(nodes.length - 1);
 
-
-                // }
-
-                // Recompute the layout and data join.
+                //Recalcula el layaout y datos de unión.
                 node = node.data(tree.nodes(root), function (d) {
                     return d.id;
                 });
@@ -139,7 +112,7 @@
                     return d.source.id + "-" + d.target.id;
                 });
 
-                // Add entering nodes in the parent’s old position.
+                // Agrega un entero nodo en el pariente de la vieja posición.
                 node.enter().append("circle")
                     .attr("class", "node")
                     .attr("r", 10)
@@ -155,7 +128,6 @@
 
                 //Prueba de introduccion de texto
                 text.enter().append("text")
-                    // .attr("dy", 3)
                     .attr("class", "text")
                     .attr("y", function (d) {
                         return d.parent.py + 2;
@@ -165,12 +137,22 @@
                     })
                     .attr("text-anchor", "middle")
                     .text(function (d) {
-                        // return d.listo;
-                        return d.valor;
+                        if (imprimir == 0) {
+                            return d.valor;
+                            
+                        } else if (imprimir == 1) {
+                            return d.listo;
+                            
+                        } else if (imprimir == 2) {
+                            return d.id + 1;
+                        } else {
+                            return d.depth + 1;
+                        }
+
                     });
 
 
-                // Add entering links in the parent’s old position.
+                // Agrega una entera conexión en el pariente con la vieja posición.
                 link.enter().insert("path", ".node")
                     .attr("class", "link")
                     .attr("d", function (d) {
@@ -184,7 +166,7 @@
                         });
                     });
 
-                // Transition nodes and links to their new positions.
+                // Transición de nodos y links a su nueva posición.
                 var t = svg.transition()
                     .duration(duration);
 
@@ -208,8 +190,17 @@
                         return d.px = d.x;
                     })
                     .text(function (d) {
-                        return d.listo;
-                        // return d.valor;
+                        if (imprimir == 0) {
+                            return d.valor;
+                            
+                        } else if (imprimir == 1) {
+                            return d.listo;
+                            
+                        } else if (imprimir == 2) {
+                            return d.id +1;
+                        } else {
+                            return d.depth + 1;
+                        }
                     })
                     .attr("y", function (d) {
                         return d.py = d.y + 3;
@@ -219,34 +210,24 @@
             if (contador > 1) {
                 nodes[jo].listo = 1;
                 tictac--;
-                // if (tictac <= 0) return clearInterval(timer);
                 if (tictac <= 0) {
                     console.log("Análisis Completado Exitosamente...");
                     return clearInterval(timer);
                 }
                 jo = 0;
-               
+
                 while (nodes[jo].listo == 1) {
                     if (tictac < 4) {
                         jo++;
                     } else {
                         jo = Math.floor(Math.random() * nodes.length);
                     }
-                    
-                }        
-                        
-
+                }
                 contador = 0;
             } else {
                 contador++;
-                // jo++;
             }
-            // if (nodes.length + 1 == tictac) {
-            //     clearInterval(timer);
-            //     console.log("Análisis Completado...");
-            // }
-
         }
-
-
     </script>
+
+</body>
