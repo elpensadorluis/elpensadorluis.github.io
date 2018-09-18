@@ -28,6 +28,19 @@
 <body>
     <script src="//d3js.org/d3.v3.min.js"></script>
     <script>
+        lines = [
+            "╔════════════════════════════════════════════════════════════════════════════════════════════════════════╗",
+            "║ ███████╗███████╗███╗   ██╗████████╗██╗   ██╗    ███████╗████████╗██╗   ██╗██████╗ ██╗ ██████╗ ███████╗ ║",
+            "║ ██╔════╝██╔════╝████╗  ██║╚══██╔══╝██║   ██║    ██╔════╝╚══██╔══╝██║   ██║██╔══██╗██║██╔═══██╗██╔════╝ ║",
+            "║ ███████╗█████╗  ██╔██╗ ██║   ██║   ██║   ██║    ███████╗   ██║   ██║   ██║██║  ██║██║██║   ██║███████╗ ║",
+            "║ ╚════██║██╔══╝  ██║╚██╗██║   ██║   ██║   ██║    ╚════██║   ██║   ██║   ██║██║  ██║██║██║   ██║╚════██║ ║",
+            "║ ███████║███████╗██║ ╚████║   ██║   ╚██████╔╝    ███████║   ██║   ╚██████╔╝██████╔╝██║╚██████╔╝███████║ ║",
+            "║ ╚══════╝╚══════╝╚═╝  ╚═══╝   ╚═╝    ╚═════╝     ╚══════╝   ╚═╝    ╚═════╝ ╚═════╝ ╚═╝ ╚═════╝ ╚══════╝ ║",
+            "╚══════════════════════════════════════════════════════════════════════════════ Luis Echenique ══════════╝"
+        ]
+        for (i = 0; i < lines.length; i++) {
+            console.log(lines[i]);
+        }
         var width = window.innerWidth,
             height = window.innerHeight - 20;
 
@@ -44,6 +57,10 @@
         root.color = "rgb(14, 116, 199)";
         root.restado = 0;
 
+        var contador = 0;
+        var jo = 0;
+        var tictac = 1;
+        var imprimir = 0;
 
         var nodes = tree(root),
             base = 1,
@@ -60,19 +77,11 @@
 
         var node = svg.selectAll(".node"),
             link = svg.selectAll(".link"),
-            ltext = svg.selectAll(".ltext")
-            .attr({
-                "class": "ltext",
-                "text-anchor": "middle"
-            })
-        text = svg.selectAll(".text");
+            ltext = svg.selectAll(".ltext"),
+            text = svg.selectAll(".text");
 
 
-        var contador = 0;
-        var jo = 0;
-        var tictac = 1;
-        var imprimir = 0;
-
+        console.log("inicia el análisis...");
         var duration = 400,
             timer = setInterval(update, duration);
 
@@ -171,6 +180,8 @@
                         });
                     });
 
+
+                // Agrega texto al comienzo de la conexión
                 link.enter().insert("text")
                     .attr("class", "ltext")
                     .attr("font-family", "Arial, Helvetica, sans-serif")
@@ -180,10 +191,10 @@
 
 
                     .attr("x", function (d) {
-                        return (d.source.x + d.target.x) / 2;
+                        return d.source.x;
                     })
                     .attr("y", function (d) {
-                        return (d.source.y + d.target.y) / 2;
+                        return d.source.y;
                     })
                     .attr("dy", ".35em")
                     .attr('startOffset', '50%')
