@@ -1,32 +1,13 @@
-/*jslint onevar: true, undef: false, nomen: true, eqeqeq: true, plusplus: false, bitwise: true, regexp: true, newcap: true, immed: true  */
-/**                                                                                
-                        .-----------------------.                               
-                  `-----`                       `.----.                         
-              `---.                                   `---.                     
-           .--.                                           `---                  
-        .--`                                                  --.               
- -/-. --.                                                       `-- `-::        
- yMMMMNhs/-                                                   ./oymMMMMN        
- odyNddmNMMNdo:                                           -+hNMMMNmdMhdy`       
- /`/d::::/+oydNNh+`                                    :yNNdys+/::::ss /`       
- / m+::::::::::yMMMh/                               -yNMMd:::::::::::N.:`       
- /.M::::::::::oMMMMMMNo`                         `+mMMMMMMy::::::::::d+/        
- /-M::::::::::sMMMMMMMMMs.                     `+NMMMMMMMMd::::::::::m+/        
- `/No::::::::::dMMMMMMMNsyo`                  /hoNMMMMMMMm/:::::::::/M+-        
-  /sm:::::::::::+ydmmhs/::/y:               .y+:::ohdmdho:::::::::::hd/         
-   +dd::::::::::::::::::::::oo`            /s::::::::::::::::::::::yN+`         
-   ./hm+:::::::::::::::::::::/s.    -     o+:::::::::::::::::::::/hm/-          
-    .:+Nh/:::::::::::::::::::::h.  `m.   y/::::::::::::::::::::/sNs--           
-     .:`omdo/:::::::::::::::+yy:   yMd`  .syo::::::::::::::::ohNs.--            
-      `/` :sdmhso+////++syhy+.   `yMMMd.   `/shyso+////+osydmy/` :.             
-        --   `-/+ssyyso+:.      /NMMMMMNo      `:/osyyyso/-`   -:               
-         `:-                    .mMMMMMN:                    .:`                
-           `:-                   .mMMMN-                   .:.                  
-              --.                 -MMM/                 `--`                    
-                `--.               oMh               .-/:.    
-                   `----`          `M-           .---`  Luis Echenique 20150303
-                        .------.``  y   `.------.                          -    
-                                `...-...``*/                                      
+lines = `
+╔═══════════════════════════════════════════════╗
+║ ███████╗███████╗███╗   ██╗████████╗██╗   ██╗  ║
+║ ██╔════╝██╔════╝████╗  ██║╚══██╔══╝██║   ██║  ║
+║ ███████╗█████╗  ██╔██╗ ██║   ██║   ██║   ██║  ║
+║ ╚════██║██╔══╝  ██║╚██╗██║   ██║   ██║   ██║  ║
+║ ███████║███████╗██║ ╚████║   ██║   ╚██████╔╝  ║
+║ ╚══════╝╚══════╝╚═╝  ╚═══╝   ╚═╝    ╚═════╝   ║
+╚═════════════════════════════ Luis Echenique ══╝`;
+console.log(lines);                               
 
 (function () {
 
@@ -572,7 +553,7 @@
 
 
     /** ****************************************************************************************************************************
-     *
+     *TODO: Cambiar la configuración del canvas a responsive.
      */
     canvas: {
 
@@ -635,7 +616,7 @@
           this.width = this.height = 1;
         }
 
-        /*/ Canvas Dinamico: pensando en hacer que el canvas cambie de tamaño cuando se cambie de zoom
+        /*/TODO: Canvas Dinamico: pensando en hacer que el canvas cambie de tamaño cuando se cambie de zoom
         this.width = this.width + (this.cellSpace * GOL.columns) + (this.cellSize * GOL.columns);
         this.canvas.setAttribute('width', this.width);
 
