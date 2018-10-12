@@ -32,7 +32,7 @@
         height = window.innerHeight - 20;
         
         var tree = d3.layout.tree()
-        .size([width - (20 * 2), height - (20 * 2)]);
+            .size([width - (20 * 2), height - (20 * 2)]);
         
         var root = {};
         root.parent = root;
@@ -50,8 +50,8 @@
         var imprimir = 2; //0:resta 1:valida 2:enumera
         
         var nodes = tree(root),
-        base = 1,
-        matriz = [11, 9, 6, 1];
+            base = 1,
+            matriz = [11, 9, 6, 1];
         
         
         var diagonal = d3.svg.diagonal();
@@ -61,16 +61,16 @@
         //     .attr("height", height);
         
         var svg = d3.select("body").append("svg")
-        .attr("width", width)
-        .attr("height", height)
-        .append("g")
-        .attr("transform", "translate(20,20)");
+            .attr("width", width)
+            .attr("height", height)
+            .append("g")
+            .attr("transform", "translate(20,20)");
         
         var node = svg.selectAll(".node"),
-        link = svg.selectAll(".link"),
-        ltext = svg.selectAll(".ltext"),
-        text = svg.selectAll(".text");
-        </script>
+            link = svg.selectAll(".link"),
+            ltext = svg.selectAll(".ltext"),
+            text = svg.selectAll(".text");
+    </script>
 
 
 <script src="./app.js"></script>
