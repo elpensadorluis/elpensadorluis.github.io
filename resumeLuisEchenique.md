@@ -3,10 +3,15 @@
 ## Resumen
 ```javascript
 var myStack = [
+"Flutter", "Dart",
 "HTML", "CSS", "Node.js", "express.js", "Firebase", "React.js",
 "React Native", "Docker", "GraphQL", "AWS", "MongoDB", "d3.js"
 ];
 ```
+“Programar es simple. Pero el crear buen código es un arte, y lograrlo es un trayecto de toda la vida.”
+
+Soy Arquitecto de Software que desarrollada aplicaciones para móviles **iOS** y **Android** de forma nativa a través del **framework Flutter**.
+
 Desarrollador de software con experiencia desarrollando aplicaciones web y móviles utilizando tecnologías como HTML, CSS, Node.js, express.js, Firebase, React.js, React Native, Docker, GraphQL, MongoDB y d3.js. Especializandome en el Lenguaje de programación JavaScript bajo el paradigma Funcional,  uso del estándar ECMAScript 6 (actualizando a ECMAScript 7 y 8), aplicando metodología SCRUM.
 ## Experiencia Laboral
 #### Autónomo. JavaScript Developer. junio de 2017 - Actual.
