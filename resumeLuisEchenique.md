@@ -1,5 +1,5 @@
-# Luis Echenique {: #center_id }
-### anchastreluis@gmail.com | +58 412 831 2251 | [/in/echeniqueluis/][1] | https://github.com/elpensadorluis
+# Luis Guillermo Echenique
+### anchastreluis@gmail.com | +58 424 325 3613 | [LinkedIn][1] | [GitHub][2]
 ## Resumen
 ```javascript
 var myStack = [
@@ -14,9 +14,9 @@ Soy Arquitecto de Software que desarrollada aplicaciones para móviles **iOS** y
 
 Desarrollador de software con experiencia desarrollando aplicaciones web y móviles utilizando tecnologías como HTML, CSS, Node.js, express.js, Firebase, React.js, React Native, Docker, GraphQL, MongoDB y d3.js. Especializandome en el Lenguaje de programación JavaScript bajo el paradigma Funcional,  uso del estándar ECMAScript 6 (actualizando a ECMAScript 7 y 8), aplicando metodología SCRUM.
 ## Experiencia Laboral
-#### Autónomo. JavaScript Developer. junio de 2017 - Actual.
- Desarrollé aplicaciones web y móvil utilizando eficientemente librerías desarrolladas en JavaScript aumentando la estabilidad de la aplicación y ofreciendo soluciones a problemas con un **120%** de efectividad al mejorar la arquitectura de software cliente - servidor. `{ myStack }`
-#### SabioGuruStudio. Diseñador Proyectista 2d 3d cad/cam. junio de 2012 - mayo de 2018 (6 años).
+#### SENTU Studio (freelance). Fluter developer. mayo de 2016 - Actual.
+ Desarrollé aplicaciones web y móvil utilizando eficientemente librerías desarrolladas en Dart junto al sdk flutter, aumentando la estabilidad de la aplicación y ofreciendo soluciones a problemas con un **120%** de efectividad al mejorar la arquitectura de software cliente - servidor. `{ myStack }`
+#### SENTU Studio (freelance). Diseñador Proyectista 2d 3d cad/cam. junio de 2012 - Actualidad (8 años).
 Desarrollé aplicaciones bajo el concepto Api Restful para entornos web, móviles y escritorio.Transformar la visión y las ideas del cliente en realidades virtuales y realidad aumentada de alto rendimiento como 3D Artist Visualizers logrando aumentar el impacto de captación de clientes en un **80%**.`{ myStack + [blender, python, Unity 3d, Unreal Engine]}`
 #### Fundación Centro Nacional de Desarrollo e Investigación en Tecnologías Libres - CENDITEL. Analista de Desarrollo de Tecnologías Libres. marzo de 2017 - noviembre de 2017 (9 meses).
 Implementé el uso de la estructura de frontEnd y backEnd para organizar el desarrollo efectivo y funcional de aplicaciones como Analista de Desarrollo de Tecnologías Libres aumentando la efectividad de desarrollo en un 20% con un impacto en el producto final de **150%** en estabilidad. `{ myStack + [python, django] }`
@@ -46,3 +46,4 @@ Ejecutar los procesos administrativos del área Empresarial, aplicando las norma
 * Instituto Diocesano Pablo VI. Técnico Medio en Administración Financiera, Comercio y Servicios Administrativos · (1996 - 2002)
 
 [1]: https://www.linkedin.com/in/echeniqueluis/
+[2]: https://github.com/elpensadorluis/
