@@ -5,7 +5,7 @@
 var myStack = [
 "HTML", "CSS", "Node.js", "express.js", "Firebase", "React.js",
 "React Native", "Docker", "GraphQL", "AWS", "MongoDB", "d3.js",
-"Python", "Dart", "Flutter", "Swift", "kotlin"
+"Python","Django", "Dart","javascript","vueJS","Nuxt", "Flutter", "Swift", "kotlin"
 ];
 ```
 **“Programar es simple. Pero el crear buen código es un arte, y lograrlo es un trayecto de toda la vida.”**
